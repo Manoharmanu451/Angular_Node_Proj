@@ -1,0 +1,38 @@
+<button class="editbtn" (click)="generateSlot()">Generate</button>
+
+<select (ngModel)='colorSelected' (change)='onColorSelected($event.target.value)'>
+    <option  value ="All" selected>All</option>
+    <option  *ngFor='let option of randomColors' [ngValue]="option">{{option}}</option>
+</select>
+
+<input (keyup)="applyFilter($event)">
+
+<table>
+  <tr>
+    <th>Slot NO</th>
+    <th>Registration Number</th>
+    <th>Color</th>
+    <th>Modify</th>   
+  </tr>
+  <tr *ngFor="let com of lstcars">
+    <td>{{com.SlotNo}}</td>
+    <td>{{com.RegNo}}</td>
+    <td>{{com.Color}}</td>
+    <button  class="editbtn" (click)="deleteCars(com._id)">Delete</button>
+  </tr>
+</table>
+
+<style>
+  table,td,th{
+    border: 1px solid black;
+  }
+  table{
+    border-collapse: collapse;
+  }
+  th{
+    height: 50px;
+  }
+  td{
+    text-align: center;
+  }
+</style>
